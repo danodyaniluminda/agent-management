@@ -1,0 +1,44 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: agentms
+  name: agentms
+  namespace: backend
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: agentms
+  template: 
+    metadata: 
+      labels: 
+        app: agentms
+    spec: 
+      containers: 
+        - 
+          image: "registry.gitlab.com/business-intelligence-agency/saraagentservices:latest"
+          imagePullPolicy: Always
+          name: agentms
+          ports: 
+            - 
+              containerPort: 7003
+          env:
+          - name: spring_profiles_active
+            value: prod
+          volumeMounts:
+          - mountPath: "/var/tmp/saraagencybanking"
+            name: afb-pv-claim-agentms-storage     
+      imagePullSecrets: 
+        - 
+          name: regcred
+      volumes:
+        -
+          name: afb-pv-claim-agentms-storage
+          persistentVolumeClaim:
+            claimName: afb-pv-claim-agentms
+      securityContext:
+          runAsUser: 1000
+          fsGroup: 2000
+          runAsNonRoot: true

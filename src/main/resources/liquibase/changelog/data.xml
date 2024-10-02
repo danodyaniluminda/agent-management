@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="20220507-ADMIN-WALLET-FEE" author="Mayuran">
+        <sql>
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Customer Registration');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Customer Activation');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Password Initialisation');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Bank Account Opening');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Balance check');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Mini-statements');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Cash In');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Cash Out');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Wallet to Wallet transfer');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Bank Transfer');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Remittance');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Top-up Wallet');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Money Withdrawal');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Airtime top-up');
+            INSERT INTO public.agent_operation (active, create_date, name) VALUES (true, '2024-06-03 00:22:28.000000', 'Bill Payments');
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
