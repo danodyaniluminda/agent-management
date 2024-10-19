@@ -1,0 +1,67 @@
+spring:
+  datasource:
+    password: mRb!3j^2&GS
+    url: jdbc:postgresql://localhost:5432/biapay_dev?currentSchema=biapay
+    username: bia_app
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+  #  Kafka
+  kafka:
+    bootstrap-servers: localhost:9092
+
+login:
+  url: https://connect-dev.biapay.net/
+redirect:
+  url: https://connect-dev.biapay.net/verifyRegister/
+
+StoreImages: /biaapp/store
+biapay:
+  upload-location: /biaapp/uploads
+  enable-2fa: false
+
+image:
+  url: /biaapp/store
+
+backoffice:
+  domain: https://connect-dev.biapay.net
+  adminLogin: https://connect-dev.biapay.net/adminLogin
+
+services:
+  invoice:
+    url: https://localhost:9000/invoice
+  websocket:
+    url: http://localhost:9003/websocket
+
+kyc-alert-config:
+  frequency: "0 0 0 * * *"
+  minDelayToStartAlertInDays: 3
+  delayToInactivateMerchantInDays: 7
+  delayToInactivateCustomerInDays: 30
+  delayToSuspendMerchantInDays: 30
+  delayToSuspendCustomerInDays: 60
+
+keycloak:
+  realm: biapay
+  auth-server-url: https://auth-dev.biapay.net
+  resource: auth-service
+  credentials:
+    secret: cc6xkzPTPUi9JLpkxvBVDofvvo0muFU8
+  ssl-required: none
+  bearer-only: true
+
+keycloak-config:
+  admin:
+    username: biapay_admin
+    password: AYfASVncA#9tjVs2
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://localhost:8999/eureka
+  instance:
+    preferIpAddress: true
+    hostname: localhost

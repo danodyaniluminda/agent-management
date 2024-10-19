@@ -1,0 +1,176 @@
+spring:
+  datasource:
+    password: mRb!3j^2&GS
+    url: jdbc:postgresql://pgsql-dev.biapay.net:5432/biapay_dev?currentSchema=biapay
+    username: bia_app
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 3
+      #    hikari:
+      #      maximum-pool-size: 10
+      #      connection-timeout: 30000
+      #      idle-timeout: 600000
+      #      max-lifetime: 1800000
+      #      pool-name: BIAPayHikariPool
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: true
+  mail:
+    protocol: smtp
+    host: live.smtp.mailtrap.io
+    port: 587
+    username: api
+    password: 771a025692cf29e9101061afd303e378
+    from: notifications@groupebia.com
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: "*"
+    debug: false
+    transport:
+      protocol: smtp
+    smtp:
+      auth: true
+      starttls:
+        enable: true
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 75MB
+  resources:
+    add-mappings: true
+  application:
+    name: agent-management-service
+
+  #  Kafka
+  kafka:
+    bootstrap-servers: kafka-dev.biapay.net:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: ${NODE-ID:NODE-1}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    topics:
+      notification: TO_NOTIFICATION_SERVICE
+      wallet: TO_WALLET_SERVICE
+      account-management: TO_ACCOUNT_MANAGEMENT
+
+StoreImages: /fileserver/store
+biapay:
+  upload-location: /fileserver/store
+  notification-from-name: "BIAPAY Notification"
+  default-currency: "XAF"
+  enable-2fa: true
+app:
+  firebase-configuration-file: certificate/biapay-app-firebase-adminsdk-bcr1v-1536e0425d.json
+authentication:
+  max:
+    login:
+      attempt: 3
+  credentials:
+    validity: 20
+email:
+  password: Password1@
+  username: biapayemail@gmail.com
+image:
+  url: /fileserver/store
+jwt:
+  expiration: 900000
+  secret: 0}faqKI60(,zC9D_H0:^&3~.Y|$B]5`QD('^qPJE12nE^&,FjJQ"=gt'o~^U"nF
+login:
+  url: http://console.biapay.net:9000/login
+
+redirect:
+  url: http://console.biapay.net:9000/verifyRegister/
+  url.user: http://console.biapay.net:9000/verifyEmailUser/
+server:
+  port: 8006
+  tomcat:
+    max-swallow-size: 25MB
+    max-http-form-post-size: 25MB
+  error:
+    include-message: always
+
+
+backoffice:
+  domain: https://connect-dev.biapay.net
+  adminLogin: https://connect-dev.biapay.net/adminLogin
+
+cron:
+  midnight: "0 0 0 * * *"
+  each-minute: "0 * * * * *"
+
+kyc-alert-config:
+  frequency: "0 0 0 * * *"
+  minDelayToStartAlertInDays: 90
+  delayToInactivateMerchantInDays: 365
+  delayToInactivateCustomerInDays: 30
+  delayToSuspendMerchantInDays: 365
+  delayToSuspendCustomerInDays: 60
+
+
+services:
+  invoice:
+    url: https://api-dev.biapay.net/invoice
+  notification:
+    pdf-file-path: /var/tmp/notifications
+  websocket:
+    url: https://websocket-dev.biapay.net
+
+super-agent:
+  email: biapay@groupebia.com
+  password: Password123@
+
+registration:
+  email: registration@biapay.net
+
+whatsapp:
+  send-message:
+    url: https://graph.facebook.com/${version}/${phone-number-id}/messages
+    version: v15.0
+    phone-number-id: 101957822833981
+    token: EAAxwepcSzmoBANd7ZBEJGlfZBV5zXzU3LznQDOKRT5DIUflElthvZAJA3zldxAUUrExxjItFhlpRZAgnFSZBjyotrk1oy8NRITRfjqLzw71okvfuVkJG7rr1llRElqYCwf1DurM4fbXEIx4JFSN7EObKZBzbH2WGHPxMb7QrKFGZCbIgusPTIyMxnUpb6nTiiYKZB64A6wKz6gZDZD
+
+keycloak:
+  realm: biapay
+  auth-server-url: https://auth-dev.biapay.net
+  resource: auth-service
+  credentials:
+    secret: cc6xkzPTPUi9JLpkxvBVDofvvo0muFU8
+  ssl-required: none
+  bearer-only: true
+
+keycloak-config:
+  admin:
+    username: biapay_admin
+    password: AYfASVncA#9tjVs2
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: https://eureka-dev.biapay.net/eureka
+  instance:
+    preferIpAddress: true
+    hostname: localhost
+
+logging:
+  level:
+    org.springframework: debug
+    com.biapay.merchantmanagementservice: debug
+    org.springframework.security: debug
+    org.keycloak: debug
+    root: info
