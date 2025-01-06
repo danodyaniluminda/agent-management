@@ -41,10 +41,10 @@ services:
 
 keycloak:
   realm: biapay
-  auth-server-url: https://auth.biapay.net/
+  auth-server-url: https://auth.biapay.net
   resource: auth-service
   credentials:
-    secret: oEELzbwomeYN1DCen4KMeAvGoAwmODI4
+    secret: 7zjx3VtzwVXhUPmfBJill8wksmX1MPMa
   ssl-required: none
   bearer-only: true
 
