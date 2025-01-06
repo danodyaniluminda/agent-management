@@ -148,7 +148,7 @@ keycloak:
   auth-server-url: https://auth-dev.biapay.net
   resource: auth-service
   credentials:
-    secret: cc6xkzPTPUi9JLpkxvBVDofvvo0muFU8
+    secret: 7zjx3VtzwVXhUPmfBJill8wksmX1MPMa
   ssl-required: none
   bearer-only: true
 
