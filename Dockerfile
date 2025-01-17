@@ -1,5 +1,4 @@
-ARG REG_NAME
-FROM $REG_NAME/maven-3-adoptopenjdk-11:01 as builder
+FROM harbor.biapay.net/maven/3-adoptopenjdk-11:01 as builder
 WORKDIR /application
 COPY . /application
 RUN mvn dependency:go-offline
