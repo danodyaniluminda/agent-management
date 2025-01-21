@@ -14,6 +14,15 @@ spring:
       #      max-lifetime: 1800000
       #      pool-name: BIAPayHikariPool
 
+liquibase:
+    change-log: classpath:liquibase/master.xml
+    enabled: true
+    url: jdbc:postgresql://pgsql-dev.biapay.net:5432/biapay_dev?currentSchema=biapay
+    user: bia_app
+    password: mRb!3j^2&GS
+
+
+
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: false
