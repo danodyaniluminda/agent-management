@@ -57,6 +57,15 @@ public class AgentDetails extends AbstractAuditingEntity {
     @Column(name = "agent_name")
     private String agentName;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "super_agent_id")
+    private String superAgentId;
+
     @Column(name = "supervisor_agent_id", nullable = true)
     private String supervisorAgentId;
 
@@ -64,7 +73,8 @@ public class AgentDetails extends AbstractAuditingEntity {
     private String supervisorAgentEmail;
 
     @Column(name = "status")
-    private boolean status;
+    @Enumerated(EnumType.STRING)
+    private AgentStatus status;
 
     @Column(name = "agent_status")
     @Enumerated(EnumType.STRING)
@@ -93,11 +103,20 @@ public class AgentDetails extends AbstractAuditingEntity {
     @Column(name = "phone_verified")
     private Boolean phoneVerified;
 
+    @Column(name = "approved_by")
+    private String approvedBy;
+
     @Column(name = "two_factor_status")
     private Boolean twoFactorStatus;
 
     @Column(name = "phone_verification_otp")
     private String phoneVerificationOTP;
+
+    @Column(name = "agent_email_address")
+    private String agentEmailAddress;
+
+    @Column(name = "phone_number_country_code")
+    private String phoneNumberCountryCode;
 
     @OneToMany(fetch = FetchType.EAGER)
     private Set<User> users;
@@ -134,4 +153,9 @@ public class AgentDetails extends AbstractAuditingEntity {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(mappedBy = "merchants", fetch = FetchType.EAGER)
     private Set<MerchantGroup> merchantGroups;
+
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.ALL)
+    @Where(clause = "document_type='SELFIE_DOCUMENT'")
+    @JoinColumn(name = "agent_id")
+    private Set<DocumentIdInfo> selfieDocuments = new HashSet<>();
 }

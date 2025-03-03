@@ -48,7 +48,7 @@ public class AgentDetailsResponse {
 
     private String supervisorAgentEmail;
 
-    private boolean status;
+    private AgentStatus status;
 
     @Enumerated(EnumType.STRING)
     AgentStatus agentStatus;

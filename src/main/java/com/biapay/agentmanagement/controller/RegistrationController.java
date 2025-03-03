@@ -74,42 +74,6 @@ public class RegistrationController {
     }
 
 
-    @Operation(description = "Agent Linking Request")
-    @PostMapping(
-            value = "/api-public/AgentRegistration/agentLinkingRequest")
-    public ResponseEntity<AgentLinkingResponse> agentLinkingRequest(KeycloakAuthenticationToken token, @Valid @RequestBody AgentReq transactionReq) {
-        log.info("Received request: {}", transactionReq);
-        AgentLinkingResponse agentLinkingResponse = agentProfileService.agentLinking(token, transactionReq);
-        return ResponseEntity.ok(agentLinkingResponse);
-    }
-
-
-    @Operation(description = "Validate Existing Bank Customer linking MFA token ")
-    @PostMapping(
-            value = "/api-public/AgentRegistration/validateMFALinkingToken")
-    public ResponseEntity validateMFATokenForBankCustomerAgent(KeycloakAuthenticationToken token, @Valid @RequestBody AgentReq transactionReq) {
-        log.info("Received request: {}", transactionReq);
-        agentProfileService.validateMFAForExistingBankCustomerAgent(token, transactionReq);
-        return ResponseEntity.ok().build();
-    }
-
-    @Operation(description = "get All Linking Requests Of Super Agent")
-    @GetMapping(
-            value = "/api-public/AgentRegistration/getLinkingRequests")
-    public ResponseEntity<List<AgentLinkingRequestDTO>> getLinkingRequestsBySuperAgent(KeycloakAuthenticationToken token) {
-        log.info("Received request");
-        return ResponseEntity.ok(agentProfileService.getListOfLinkingRequests(token));
-    }
-
-    @Operation(description = "Process Linking Request By Super Agent")
-    @PostMapping(
-            value = "/api-public/AgentRegistration/processLinkingRequest")
-    public ResponseEntity processLinkingRequestBySuperAgent(KeycloakAuthenticationToken token, @Valid @RequestBody AgentReq transactionReq) {
-        log.info("Received request");
-        agentProfileService.processLinkingRequestBySuperAgent(token, transactionReq);
-        return ResponseEntity.ok().build();
-    }
-
     @Operation(description = "Update Agent KYC")
     @PostMapping(
             value = "/api-public/AgentRegistration/agentKYC")
@@ -127,26 +91,6 @@ public class RegistrationController {
             , @Valid AgentKYCDTO agentKYCDTO) {
         log.info("Received request");
         agentProfileService.updateAgentKYC(token, agentKYCDTO);
-        return ResponseEntity.ok().build();
-    }
-
-    @Operation(description = "Convert Agent To Agent Banker")
-    @PostMapping(
-            value = "/api-public/AgentRegistration/agentToAgentBankerRequest")
-    public ResponseEntity<AgentLinkingResponse> agentToAgentBankerRequest(KeycloakAuthenticationToken token
-            , @Valid @RequestBody AgentReq transactionReq) {
-        log.info("Received request");
-        AgentLinkingResponse agentLinkingResponse = agentProfileService.agentToAgentBankerRequest(token, transactionReq);
-        return ResponseEntity.ok(agentLinkingResponse);
-    }
-
-    @Operation(description = "Validate MFA Agent To Agent Banker")
-    @PostMapping(
-            value = "/api-public/AgentRegistration/validateAgentToAgentBankerRequest")
-    public ResponseEntity validateAgentToAgentBankerRequest(KeycloakAuthenticationToken token
-            , @Valid @RequestBody AgentReq transactionReq) {
-        log.info("Received request");
-        agentProfileService.validateAgentToAgentBankerRequest(token, transactionReq);
         return ResponseEntity.ok().build();
     }
 

@@ -132,9 +132,9 @@ public class AgentRegistrationService {
 //            }
 //        }
 
-        validateRequest(registrationReq);
-
-        Optional<AgentPackage> defaultPackageOptional = Optional.empty();
+//        validateRequest(registrationReq);
+//
+//        Optional<AgentPackage> defaultPackageOptional = Optional.empty();
 
 //        if (registrationReq.getAgentType() != AgentType.AGENT_MEMBER) {
 //            defaultPackageOptional = agentPackageRepository.findByAgentTypeAndIsDefault(registrationReq.getAgentType(), true);

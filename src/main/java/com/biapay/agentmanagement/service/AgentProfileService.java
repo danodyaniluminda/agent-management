@@ -162,7 +162,7 @@ public class AgentProfileService {
         agentDetailsResponse.setPhoneNo(agentDetails.getPhoneNo());
         agentDetailsResponse.setEmail(agentDetails.getEmail());
         agentDetailsResponse.setAgentType(agentDetails.getAgentType());
-        agentDetailsResponse.setStatus(agentDetails.isStatus());
+        agentDetailsResponse.setStatus(agentDetails.getStatus());
         agentDetailsResponse.setRegistrationDateTime(agentDetails.getRegistrationDateTime());
         agentDetailsResponse.setIamId(agentDetails.getIamId());
 
